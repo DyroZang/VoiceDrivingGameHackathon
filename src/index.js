@@ -17,29 +17,17 @@ import About from './about'
 import Navigation from './components/Navigation'
 import Spinner from 'react-bootstrap/Spinner'
 import Container from 'react-bootstrap/Container'
+import mapsImg from './assets/maps.png'
 
 function Root() {
   return (
-    <div>IM THE ROOT</div>
+    <>
+      <div style={{ backgroundImage: `url(${mapsImg})`, height: '90vh', backgroundPosition: 'center',
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat' }}></div>
+    </>
   )
 }
-
-const mainRoutes = [
-  {
-    path: "/",
-    element: <h1>hi</h1>,
-    children: [
-      {
-        path: "/game",
-        element: <Game />,
-      },
-      {
-        path: "/menu",
-        element: <Menu />,
-      },
-    ]
-  },
-];
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
