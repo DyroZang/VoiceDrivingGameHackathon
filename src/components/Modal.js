@@ -1,9 +1,7 @@
-import { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 
-export default function SampleModal() {
-  const [show, setShow] = useState(true)
+export default function SampleModal({show, setShow}) {
 
   return (
     <Modal show={show} onHide={() => setShow(false)}>
