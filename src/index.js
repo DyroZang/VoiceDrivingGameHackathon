@@ -36,7 +36,7 @@ root.render(
       <Navigation />
       <Routes>
         <Route path="/" element={<Menu />} />
-        <Route path="/game" element={<Voice />} />
+        <Route path="/game" element={<Game />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
