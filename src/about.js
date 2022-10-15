@@ -7,18 +7,29 @@ export default function About() {
   return (
     <>
       <Container>
-        <h1 className="display-1 my-3">About</h1>
+        <h1 className="display-1 my-3"></h1>
         <Row>
           <Col md={6} className="aboutSummary p-3">
-            <h5 className="display-4">Type Fast to Win ⌨️</h5>
-            <p>
-              &emsp;Sed ut perspiciatis unde omnis iste natus error sit
-              voluptatem accusantium doloremque laudantium, totam rem aperiam,
-              eaque ipsa quae ab illo inventore veritatis et quasi architecto
-              beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-              voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-              magni dolores eos qui ratione voluptatem sequi nesciunt.
-            </p>
+            <h5 className="display-4">About the project</h5>
+            <Row>
+              <Col md={10}>
+                <p style={{ fontSize: "1.1rem" }}>
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque laudantium, totam rem aperiam, eaque
+                  ipsa quae ab illo inventore veritatis et quasi architecto
+                  beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
+                  quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                  consequuntur magni dolores eos qui ratione voluptatem sequi
+                  nesciunt. Neque porro quisquam est, qui dolorem ipsum quia
+                  dolor sit amet.
+                  <a href="https://github.com/DyroZang/VoiceDrivingGameHackathon">
+                    {" "}
+                    github.com
+                  </a>
+                </p>
+                Used technologies: React, Figma
+              </Col>
+            </Row>
           </Col>
           <Col md={6}>
             <img src={logo} className="rounded shadow w-100 mb-3" />
@@ -29,46 +40,24 @@ export default function About() {
             </div>
           </Col>
           <Col md={6} className="aboutSummary p-3">
-            <h5 className="display-4">Under the Hood 🧰</h5>
-            <ul>
-              <dd className="d-inline">- React </dd>
-              <span className="text-muted"> (Front end)</span>
-              <br />
-              <dd className="d-inline">- Socket.io </dd>
-              <span className="text-muted"> (Web Sockets)</span>
-              <br />
-              <dd className="d-inline">- Express.js </dd>
-              <span className="text-muted"> (Back end)</span>
-              <br />
-              <dd className="d-inline">- MongoDB </dd>
-              <span className="text-muted"> (Database)</span>
-              <br />
-            </ul>
             <Row>
-              <p className="text-muted ms-5" style={{ fontSize: "1.1rem" }}>
-                Read More at <a href="https://codabool.com">CodaBool.com</a>
-              </p>
+              <Col md={10}>
+                <p>Team members:</p>
+                <ul>
+                  <li>Doug</li>
+                  <li>Haritha</li>
+                  <li>Gabriel</li>
+                  <li>Daryl</li>
+                  <li>Hasan</li>
+                  <li>Christine</li>
+                  <li>Zachary</li>
+                  <li>Sierra</li>
+                </ul>
+              </Col>
             </Row>
           </Col>
         </Row>
-        <Row>
-          <Col md={6}>
-            <h2 className="mt-5">Credit 🎨</h2>
-            <p style={{ fontSize: "1.1rem" }}>
-              &emsp;Sed ut perspiciatis unde omnis iste natus error sit
-              voluptatem accusantium doloremque laudantium, totam rem aperiam,
-              eaque ipsa quae ab illo inventore veritatis et quasi architecto
-              beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-              voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-              magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
-              porro quisquam est, qui dolorem ipsum quia dolor sit amet.
-              <a href="https://github.com/DyroZang/VoiceDrivingGameHackathon">
-                {" "}
-                github.com
-              </a>
-            </p>
-          </Col>
-        </Row>
+        <Row></Row>
       </Container>
     </>
   );
