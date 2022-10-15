@@ -13,6 +13,7 @@ import logo from './logo.svg'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Menu from './menu'
 import Game from './game'
+import Voice from './Voice'
 import About from './about'
 import Navigation from './components/Navigation'
 import Container from 'react-bootstrap/Container'
@@ -35,7 +36,7 @@ root.render(
       <Navigation />
       <Routes>
         <Route path="/" element={<Menu />} />
-        <Route path="/game" element={<Game />} />
+        <Route path="/game" element={<Voice />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
