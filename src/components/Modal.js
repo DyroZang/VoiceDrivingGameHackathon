@@ -1,23 +1,31 @@
-import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
-export default function SampleModal({show, setShow}) {
-
+export default function SampleModal({ show, setShow }) {
   return (
     <Modal show={show} onHide={() => setShow(false)}>
       <Modal.Header closeButton>
-        <Modal.Title>Welcome!</Modal.Title>
+        <Modal.Title>Instructions</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        This is a sample of a production project. Not representative of the
-        final product. Features are missing, such as the comments and the
-        creation of new posts.
+        <b>Rules of the game:</b>
+        <br></br>
+        <br></br>
+        <ul>
+          <li>You have 1 minute to finish the game</li>
+          <li>You have 2 commands</li>
+        </ul>
+
+        <b>Commands:</b>
+        <br></br>
+        <br></br>
+        <ul>
+          <li>"Straight!"</li>
+          <li>"Right!"</li>
+          <li>"Left!"</li>
+        </ul>
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="primary" onClick={() => setShow(false)}>
-          Continue
-        </Button>
-      </Modal.Footer>
+      <Modal.Footer></Modal.Footer>
     </Modal>
-  )
+  );
 }
