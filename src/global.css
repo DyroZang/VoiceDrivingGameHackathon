@@ -1,5 +1,6 @@
 /* Global */
-body, html {
+body,
+html {
   margin: 0;
   height: 100%;
   /* height: 100%; */
@@ -11,10 +12,14 @@ body, html {
 }
 /* Countdown Text resize on small screen */
 @media (max-width: 767px) {
-  .display-1, .display-2, .display-3, .display-4 {
+  .display-1,
+  .display-2,
+  .display-3,
+  .display-4 {
     font-size: 2rem;
   }
-  h1, h2 {
+  h1,
+  h2 {
     font-size: 1.5rem;
   }
 }
@@ -33,7 +38,9 @@ body, html {
 .menuPage button {
   font-size: 2rem;
 }
-.playButton, .playButton:active, .playButton:visited {
+.playButton,
+.playButton:active,
+.playButton:visited {
   background-color: #1d4066 !important;
   border-color: #173555 !important;
   color: #8bebff !important;
@@ -44,7 +51,9 @@ body, html {
   border-color: #173555 !important;
   color: white !important;
 }
-.leftOtherButton, .leftOtherButton:active, .leftOtherButton:visited {
+.leftOtherButton,
+.leftOtherButton:active,
+.leftOtherButton:visited {
   background-color: #1b1937 !important;
   border-color: #27254d !important;
   color: #974465 !important;
@@ -55,22 +64,30 @@ body, html {
   border-color: #173555 !important;
   color: white !important;
 }
-.rightOtherButton, .rightOtherButton:active, .rightOtherButton:visited {
-  background-color: #374257 !important;
-  border-color: #445068 !important;
-  color: #bbac84 !important;
-  box-shadow: 0 10px 0px 3px #242c36 !important;
+.rightOtherButton,
+.rightOtherButton:active,
+.rightOtherButton:visited {
+  background-color: #ffae02 !important;
+  color: white !important;
+  font-weight: bold !important;
+  padding-right: 60px !important;
+  padding-left: 60px !important;
+  border-radius: 30px !important;
 }
 .rightOtherButton:hover {
   background-color: #2e4b69 !important;
   border-color: #385779 !important;
   color: white !important;
 }
-.nameButton, .nameButton:active, .nameButton:visited {
-  background-color: #1c1a48 !important;
-  border-color: #28255d !important;
-  color: #8df1fd !important;
-  box-shadow: 0 10px 0px 3px #090b2a !important;
+.nameButton,
+.nameButton:active,
+.nameButton:visited {
+  background-color: #ffae02 !important;
+  color: white !important;
+  font-weight: bold !important;
+  padding-right: 60px !important;
+  padding-left: 60px !important;
+  border-radius: 30px !important;
 }
 .nameButton:hover {
   background-color: #173657 !important;
@@ -88,8 +105,14 @@ body, html {
   border: 1px solid #edbfff;
 }
 .aboutTech {
-  background: linear-gradient(-45deg, #d18dff, #d5d5ff, rgb(215, 255, 255), rgb(110, 255, 224));
-	background-size: 300% 300%;
+  background: linear-gradient(
+    -45deg,
+    #d18dff,
+    #d5d5ff,
+    rgb(215, 255, 255),
+    rgb(110, 255, 224)
+  );
+  background-size: 300% 300%;
   animation: gradient 20s ease infinite;
   border-radius: 10%;
   margin-top: 40px;
@@ -100,9 +123,15 @@ dd {
   font-size: 2rem;
 }
 @keyframes gradient {
-	0% { background-position: 0% 50%; }
-	50% { background-position: 100% 50%; }
-	100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 .correct {
   color: green;
@@ -137,25 +166,39 @@ dd {
   animation: fadein 1s;
 }
 @keyframes fadein {
-  0% { opacity: 0; }
-  80% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* Chat Room Messages */
 .myMsg {
-  background-image: linear-gradient(to left, rgb(233, 233, 233), rgb(255, 255, 255));
+  background-image: linear-gradient(
+    to left,
+    rgb(233, 233, 233),
+    rgb(255, 255, 255)
+  );
   color: rgb(0, 0, 0);
   padding: 5px;
 }
 .yourName {
-  color: #138E9E;
+  color: #138e9e;
 }
 .otherName {
-  color: #1E74F5;
+  color: #1e74f5;
 }
 .otherMsg {
-  background-image: linear-gradient(to right, rgb(222, 222, 255), rgb(255, 255, 255));
+  background-image: linear-gradient(
+    to right,
+    rgb(222, 222, 255),
+    rgb(255, 255, 255)
+  );
   color: rgb(0, 0, 0);
   padding: 5px;
 }
@@ -172,7 +215,10 @@ dd {
 .navbar a {
   font-size: 2em;
 }
-.active, .navbar-brand a, .navbar-brand a:hover, .navbar-nav a:hover {
+.active,
+.navbar-brand a,
+.navbar-brand a:hover,
+.navbar-nav a:hover {
   color: rgb(232, 230, 227) !important;
   text-decoration: none;
 }
@@ -190,9 +236,9 @@ a {
 }
 .active-link {
   text-decoration: none !important;
-  color: rgb(232, 230, 227) !important
+  color: rgb(232, 230, 227) !important;
 }
-.active-link:visited  {
+.active-link:visited {
   text-decoration: none !important;
 }
 .navBox-btn {
@@ -209,7 +255,7 @@ a {
   background-color: rgba(255, 255, 255, 0.8);
 }
 .navBox a:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   bottom: 0;
@@ -229,20 +275,20 @@ a {
 }
 #img-home {
   position: absolute;
-  bottom:116px;
-  right:0px;
+  bottom: 116px;
+  right: 0px;
   border-radius: 20px 20px 0px 0px;
 }
 #img-code {
   border-radius: 0px 0px 20px 20px;
 }
 .navBox {
-	position: fixed;
-	right: 25px;
-  top:50%;
-  height:120px;
+  position: fixed;
+  right: 25px;
+  top: 50%;
+  height: 120px;
   font-size: 1.2em;
-  width:12%;
+  width: 12%;
   z-index: 1;
 }
 .navBox img {
@@ -253,7 +299,7 @@ a {
 }
 @media (max-width: 991px) {
   .navBox {
-    width:20%;
+    width: 20%;
   }
   .navBox-btn {
     color: black;
