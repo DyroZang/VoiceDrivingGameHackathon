@@ -15,19 +15,17 @@ import Menu from './menu'
 import Game from './game'
 import About from './about'
 import Navigation from './components/Navigation'
-import Spinner from 'react-bootstrap/Spinner'
 import Container from 'react-bootstrap/Container'
-import mapsImg from './assets/maps.png'
 
-function Root() {
-  return (
-    <>
-      <div style={{ backgroundImage: `url(${mapsImg})`, height: '90vh', backgroundPosition: 'center',
-  backgroundSize: 'cover',
-  backgroundRepeat: 'no-repeat' }}></div>
-    </>
-  )
-}
+// function Root() {
+//   return (
+//     <>
+//       <div style={{ backgroundImage: `url(${mapsImg})`, height: '90vh', backgroundPosition: 'center',
+//   backgroundSize: 'cover',
+//   backgroundRepeat: 'no-repeat' }}></div>
+//     </>
+//   )
+// }
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
@@ -36,8 +34,7 @@ root.render(
     <BrowserRouter>
       <Navigation />
       <Routes>
-        <Route path="/" element={<Root />} />
-        <Route path="/menu" element={<Menu />} />
+        <Route path="/" element={<Menu />} />
         <Route path="/game" element={<Game />} />
         <Route path="/about" element={<About />} />
       </Routes>

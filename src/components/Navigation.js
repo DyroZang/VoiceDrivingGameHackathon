@@ -12,7 +12,7 @@ export default function Navigation() {
 
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
-      <Navbar.Brand style={{fontSize: '2.5rem'}} className="m-0 p-0" onClick={() => navigate('/menu')}>🚗</Navbar.Brand>
+      <Navbar.Brand style={{fontSize: '2.5rem', cursor: 'pointer'}} className="m-0 p-0" onClick={() => navigate('/')}>🚗</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="ms-auto">
