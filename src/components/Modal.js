@@ -15,7 +15,7 @@ export default function SampleModal({show, setShow}) {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="primary" onClick={() => setShow(false)}>
-          Continue
+          Okay
         </Button>
       </Modal.Footer>
     </Modal>
