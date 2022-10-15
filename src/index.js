@@ -13,41 +13,31 @@ import logo from './logo.svg'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Menu from './menu'
 import Game from './game'
-import Spinner from 'react-bootstrap/Spinner'
+import Voice from './Voice'
+import About from './about'
+import Navigation from './components/Navigation'
 import Container from 'react-bootstrap/Container'
 
-function Root() {
-  return (
-    <div>IM THE ROOT</div>
-  )
-}
-
-const mainRoutes = [
-  {
-    path: "/",
-    element: <h1>hi</h1>,
-    children: [
-      {
-        path: "/game",
-        element: <Game />,
-      },
-      {
-        path: "/menu",
-        element: <Menu />,
-      },
-    ]
-  },
-];
+// function Root() {
+//   return (
+//     <>
+//       <div style={{ backgroundImage: `url(${mapsImg})`, height: '90vh', backgroundPosition: 'center',
+//   backgroundSize: 'cover',
+//   backgroundRepeat: 'no-repeat' }}></div>
+//     </>
+//   )
+// }
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+      <Navigation />
       <Routes>
-        <Route path="/" element={<Root />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/game" element={<Game />} />
+        <Route path="/" element={<Menu />} />
+        <Route path="/game" element={<Voice />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

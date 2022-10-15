@@ -7,8 +7,8 @@ export default function game() {
     <pointLight position={[10, 10, 10]} />
     <Box position={[-1.2, 0, 0]} />
     <Box position={[1.2, 0, 0]} />
-    
-    
+
+    <Box position={[2.4, 0, 0]} />
   </Canvas>
   )
 }
@@ -30,7 +30,7 @@ function Box(props) {
   useFrame(() => {
     if (speed > 0) {
       Box.current.position.x = Box.current.position.x += 0.01
-
+    }
   })
   // Return view, these are regular three.js elements expressed in JSX
   return (
@@ -48,4 +48,5 @@ function Box(props) {
   )
   
 }
+
 
