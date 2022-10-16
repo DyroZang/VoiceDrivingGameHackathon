@@ -2,6 +2,8 @@
 
 A navigation system that takes in auditory input using Radisys API. <br>
 
+<h4><a href="http://p11-nikola-assistant-main.s3-website-us-east-1.amazonaws.com/">Live Demo</a></h4>
+
 # Docs
 
 #### Bootstrap (style) [doc](https://react-bootstrap.github.io/getting-started/introduction)
