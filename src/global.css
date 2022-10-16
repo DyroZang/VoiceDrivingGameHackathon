@@ -330,3 +330,7 @@ a {
   border-radius: 50%;
   background-color: red;
 }
+
+.modal-content {
+  font-size: 1.3rem;
+}
