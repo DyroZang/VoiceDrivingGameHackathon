@@ -5,9 +5,10 @@ import backgroundImg from './assets/maps.png'
 import Voice from './components/Voice'
 import Modal from './components/gameModal'
 import crashAudio from './assets/audio/car-crash.wav'
+import countAudio from './assets/audio/three-second-countdown.wav'
 import useAudio from './components/AudioPlayer'
 
-function Box({x, y, peds, setState, position, gameState, setShowModal, playCrashAudio}) {
+function Box({x, y, peds, setState, position, gameState, setShowModal, playCrashAudio, playCountDownAudio}) {
   const mesh = useRef()
   const [hovered, setHover] = useState(false)
   const [active, setActive] = useState(false)
@@ -16,7 +17,7 @@ function Box({x, y, peds, setState, position, gameState, setShowModal, playCrash
 
     // check endstate
     if (peds) {
-      goalCheck(peds, mesh.current.position, setState, setShowModal, playCrashAudio)
+      goalCheck(peds, mesh.current.position, setState, setShowModal, playCrashAudio, playCountDownAudio)
     }
 
     // movement
@@ -76,7 +77,7 @@ function Circle({goal, position}) {
   )
 }
 
-function goalCheck(peds, player, setState, setShowModal, playCrashAudio) {
+function goalCheck(peds, player, setState, setShowModal, playCrashAudio, playCountDownAudio) {
   for (const i in peds) {
     const xPos = player.x - peds[i].x 
     const yPos = player.y - peds[i].y 
@@ -84,6 +85,7 @@ function goalCheck(peds, player, setState, setShowModal, playCrashAudio) {
       if (peds[i].goal) {
         setState('won')
         setShowModal(true)
+        playCountDownAudio()
         return true
       } else {
         setState('lost')
@@ -105,6 +107,7 @@ export default function Game() {
   const [y, setY] = useState('up')
   const [x, setX] = useState()
   const [playing, playCrashAudio] = useAudio(crashAudio)
+  const [playingCountDown, playCountDownAudio] = useAudio(countAudio)
 
   function reset() {
     // create peds
@@ -200,6 +203,7 @@ export default function Game() {
           setShowModal={setShowModal}
           gameState={state}
           playCrashAudio={playCrashAudio}
+          playCountDownAudio={playCountDownAudio}
         />
         {peds && peds.map((ped, index) => (
            <Circle 
