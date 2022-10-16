@@ -5,7 +5,7 @@ import backgroundImg from './assets/maps.png'
 import Voice from './components/Voice'
 import Modal from './components/gameModal'
 
-function Box({x, y, peds, setState, gameState, setShowModal}) {
+function Box({x, y, peds, setState, position, gameState, setShowModal}) {
   const mesh = useRef()
   const [hovered, setHover] = useState(false)
   const [active, setActive] = useState(false)
@@ -42,6 +42,7 @@ function Box({x, y, peds, setState, gameState, setShowModal}) {
     <mesh
       ref={mesh}
       scale={0.1}
+      position={position}
       onClick={(event) => setActive(!active)}
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)}>
@@ -96,6 +97,7 @@ export default function Game() {
   const [state, setState] = useState('start')
   const [cmd, setCmd] = useState()
   const [showModal, setShowModal] = useState(true)
+  const [playerPosition, setPlayerPosition] = useState([0, -3, 0])
   const [peds, setPeds] = useState([])
   const [y, setY] = useState('up')
   const [x, setX] = useState()
@@ -188,7 +190,7 @@ export default function Game() {
         <pointLight position={[10, 10, 10]} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
         <Box
-          position={[0, 0, 0]} x={x} y={y} 
+          position={playerPosition} x={x} y={y} 
           peds={peds} 
           setState={setState} 
           setShowModal={setShowModal}
@@ -202,14 +204,14 @@ export default function Game() {
           />
         ))}
       </Canvas>
-      <Modal state={state} show={showModal} setShow={setShowModal} setState={setState} />
-      {cmd === 'up' && <h1 className="text-center">⬆️</h1>}
+      <Modal state={state} show={showModal} setShow={setShowModal} setState={setState} setPlayerPosition={setPlayerPosition} />
+      {/* {cmd === 'up' && <h1 className="text-center">⬆️</h1>}
       {cmd === 'down' && <h1 className="text-center">⬇️</h1>}
       {cmd === 'left' && <h1 className="text-center">⬅️</h1>}
       {cmd === 'right' && <h1 className="text-center">➡️</h1>}
-      {cmd === 'stop' && <h1 className="text-center">🛑</h1>}
+      {cmd === 'stop' && <h1 className="text-center">🛑</h1>} */}
       {/* {cmd && <h1 className="text-center">{cmd}</h1>} */}
-      {state === 'play' && <Voice state={state} setCmd={setCmd} />}
+      {state === 'play' && <Voice state={state} setCmd={setCmd} hide />}
     </div>
   )
 }
