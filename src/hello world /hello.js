@@ -1,10 +1,20 @@
 let circle = document.querySelector('.circle');
 let line = document.querySelector('.line');
+// let objectArr = Array.from(Array(10).keys());
+for (let i = 0; i < 20; i++) { 
+    const el = document.querySelector(`.object-${i}`);
+    console.log('index', i, 'el', el)
+    window.addEventListener('load', () => {
+        el.style.position = 'relative';
+        el.style.left = Math.floor(Math.random() * (1 - 100) + 100) + 'px';
+        el.style.top = Math.floor(Math.random() * (100 - 800) + 800) + 'px';
+    });
+  }
+
 let moveBy = 25;
 let nIntervId;
 let lIntervId;
 let rIntervId;
-circle.position
 window.addEventListener('load', () => {
     circle.style.position = 'relative';
     circle.style.left = '750px';
