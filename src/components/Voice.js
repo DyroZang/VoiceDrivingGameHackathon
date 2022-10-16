@@ -10,7 +10,7 @@ export default function Voice() {
   } = useSpeechRecognition()
 
   if (!browserSupportsSpeechRecognition) {
-    return <span>Browser doesn't support speech recognition.</span>
+    return <span>Browser doesn't support speech recognition. Please use Chrome</span>
   }
 
   return (
