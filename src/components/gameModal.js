@@ -3,11 +3,15 @@ import Modal from "react-bootstrap/Modal";
 import Voice from "./Voice";
 import { useState } from 'react'
 import lostImg from '../assets/nikola-manager.jpg'
+import mySound from '../assets/audio/car-crash.wav'
+import useAudio from './AudioPlayer'
 
 export default function CustomModal({ show, setShow, state, setState, setPlayerPosition}) {
   const [counter, setCounter] = useState()
+  const [playing, toggle] = useAudio(mySound)
 
   function startGame() {
+    toggle()
     setCounter(3)
     setTimeout(() => {
       setCounter(2)
