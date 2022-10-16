@@ -85,5 +85,3 @@ startTimer();
 }
 
 export { TimerComponent }
-
-
