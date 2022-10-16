@@ -3,7 +3,7 @@ import { Row } from 'react-bootstrap';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import MicLiveGif from '../assets/mic-live.gif'
 
-export default function Voice({ state, testing, setCmd }) {
+export default function Voice({ state, testing, setCmd, hide }) {
   const [message, setMessage] = useState('')
 
   const {
@@ -41,6 +41,10 @@ export default function Voice({ state, testing, setCmd }) {
     }, 1000 * 60) // in milliseconds
     return () => clearInterval(intervalId)
   }, [])
+
+  if (hide) {
+    return null
+  }
 
 
   return (

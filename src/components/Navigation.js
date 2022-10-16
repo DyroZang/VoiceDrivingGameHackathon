@@ -24,7 +24,7 @@ export default function Navigation() {
         className="m-0 p-0 px-5"
         onClick={() => navigate("/")}
       >
-        GPS Driver
+        ⚡Nikola Assistant
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">

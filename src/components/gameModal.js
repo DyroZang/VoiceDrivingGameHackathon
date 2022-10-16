@@ -2,12 +2,26 @@ import { Button } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import Voice from "./Voice";
 import { useState } from 'react'
+import lostImg from '../assets/nikola-manager.jpg'
 
 export default function CustomModal({ show, setShow, state, setState, resetState}) {
-  const [counter, setCounter] = useState(3)
+  const [counter, setCounter] = useState()
+
   function startGame() {
-    setShow(false)
-    setState('play')
+    setCounter(3)
+    setTimeout(() => {
+      setCounter(2)
+    }, "1000")
+    setTimeout(() => {
+      setCounter(1)
+    }, "2000")
+    setTimeout(() => {
+      setCounter(0)
+      setShow(false)
+    }, "3000")
+    setTimeout(() => {
+      setState('play')
+    }, "4000")
   }
 
   function resetGame() {
@@ -18,32 +32,38 @@ export default function CustomModal({ show, setShow, state, setState, resetState
 
   return (
     <Modal show={show} onHide={startGame}>
-      <Modal.Header closeButton>
-        {state === 'start' && <Modal.Title>How to play the game</Modal.Title>}
+      <Modal.Header>
+        {/* {counter && } */}
+        {state === 'start' && !counter && <Modal.Title>How to play the game</Modal.Title>}
         {state === 'won' && <Modal.Title>You have arrived at your destination!</Modal.Title>}
-        {state === 'lost' && <Modal.Title>You crashed!</Modal.Title>}
+        {state === 'lost' && <Modal.Title><h1 className="display-4">You crashed!</h1></Modal.Title>}
       </Modal.Header>
       {state === 'start' &&
         <Modal.Body>
-          <b>Rules of the game:</b>
-          <br></br>
-          <br></br>
-          <ul>
-            <li>You have 1 minute to finish the game</li>
-            <li>You have 2 commands</li>
-          </ul>
+          {counter
+            ? <h1 className="display-4 text-center">{counter}</h1>
+            : <>
+                <b>Rules of the game:</b>
+                <br></br>
+                <br></br>
+                <ul>
+                  <li>You have 1 minute to finish the game</li>
+                  <li>You have 2 commands</li>
+                </ul>
 
-          <b>Commands:</b>
-          <br></br>
-          <br></br>
-          <ul>
-            <li>"Up"</li>
-            <li>"Right"</li>
-            <li>"Down"</li>
-            <li>"Left"</li>
-            <li>"Stop"</li>
-          </ul>
-          <Voice testing />
+                <b>Commands:</b>
+                <br></br>
+                <br></br>
+                <ul>
+                  <li>"Up"</li>
+                  <li>"Right"</li>
+                  <li>"Down"</li>
+                  <li>"Left"</li>
+                  <li>"Stop"</li>
+                </ul>
+                <Voice testing />
+              </>
+          }
         </Modal.Body>
       }
       {state === 'won' &&
@@ -59,19 +79,17 @@ export default function CustomModal({ show, setShow, state, setState, resetState
       }
       {state === 'lost' &&
         <Modal.Body>
-          <b>PLACEHOLDER</b>
-          <br></br>
-          <br></br>
-          <ul>
-            <li></li>
-            <li></li>
-          </ul>
+          <h4>Mr. Nikola will be here hearing about this</h4>
+          <img src={lostImg} className="rounded w-100 mb-3" />
         </Modal.Body>
       }
-      <Modal.Footer>
-        {state === 'lost' && <Button onClick={resetGame} className="w-100" variant="success"> Play Again</Button>}
-        {state === 'won' && <Button onClick={resetGame} className="w-100" variant="success"> Play Again</Button>}
-      </Modal.Footer>
+      {!counter &&
+        <Modal.Footer>
+          {state === 'start' && <Button onClick={startGame} className="w-100" variant="success"> Start Game</Button>}
+          {state === 'lost' && <Button onClick={resetGame} className="w-100" variant="danger">Play Again?</Button>}
+          {state === 'won' && <Button onClick={resetGame} className="w-100" variant="success"> Play Again</Button>}
+        </Modal.Footer>
+      }
     </Modal>
   );
 }

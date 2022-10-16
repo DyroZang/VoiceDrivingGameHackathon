@@ -203,13 +203,13 @@ export default function Game() {
         ))}
       </Canvas>
       <Modal state={state} show={showModal} setShow={setShowModal} setState={setState} />
-      {cmd === 'up' && <h1 className="text-center">⬆️</h1>}
+      {/* {cmd === 'up' && <h1 className="text-center">⬆️</h1>}
       {cmd === 'down' && <h1 className="text-center">⬇️</h1>}
       {cmd === 'left' && <h1 className="text-center">⬅️</h1>}
       {cmd === 'right' && <h1 className="text-center">➡️</h1>}
-      {cmd === 'stop' && <h1 className="text-center">🛑</h1>}
+      {cmd === 'stop' && <h1 className="text-center">🛑</h1>} */}
       {/* {cmd && <h1 className="text-center">{cmd}</h1>} */}
-      {state === 'play' && <Voice state={state} setCmd={setCmd} />}
+      {state === 'play' && <Voice state={state} setCmd={setCmd} hide />}
     </div>
   )
 }
