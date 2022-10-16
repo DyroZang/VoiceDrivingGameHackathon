@@ -19,13 +19,13 @@ export default function Voice({ state, testing, setCmd, hide }) {
 
   useEffect(() => {
     if (!setCmd) return
-    const newscript = transcript.split(' ').toLowerCase()
-    for (var i = 0; i < newscript.length; i++)
-    {
-      for (var j = 0; j < direction.length; j++)
-      {
-        if (newscript[i].includes(direction[j])){
-          const recentMsg = newscript[i];
+    const direction =("left","right","up","down","stop")
+    let recentMsg= ''
+    const newscript = transcript.split(' ')
+    for (var i = newscript.length; i < newscript.length; i--) {
+      for (var j = 0; j < direction.length; j++) {
+        if (newscript[i].toLowerCase() === direction[j]) {
+          recentMsg = newscript[i].toLowerCase()
         }
       }
 
