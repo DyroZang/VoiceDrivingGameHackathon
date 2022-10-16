@@ -82,12 +82,6 @@ function startTimer() {
 
 startTimer();
 
-
-  return (
-      <div>
-          Time's out!
-      </div>
-  )
 }
 
 export { TimerComponent }
