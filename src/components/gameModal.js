@@ -5,10 +5,11 @@ import { useState } from 'react'
 import lostImg from '../assets/nikola-manager.jpg'
 import wonImg from '../assets/nikola-won.jpg'
 
-export default function CustomModal({ show, setShow, state, setState, setPlayerPosition}) {
+export default function CustomModal({ show, setShow, state, setState, setPlayerPosition, playCountdownAudio}) {
   const [counter, setCounter] = useState()
 
   function startGame() {
+    playCountdownAudio()
     setCounter(3)
     setTimeout(() => {
       setCounter(2)
@@ -38,7 +39,7 @@ export default function CustomModal({ show, setShow, state, setState, setPlayerP
       <Modal.Header>
         {/* {counter && } */}
         {state === 'start' && !counter && <Modal.Title>How to play the game</Modal.Title>}
-        {state === 'won' && <Modal.Title>You have arrived at your destination!</Modal.Title>}
+        {state === 'won' && <Modal.Title>You have arrived at your destination! 💖</Modal.Title>}
         {state === 'lost' && <Modal.Title><h1 className="display-4">You crashed!</h1></Modal.Title>}
       </Modal.Header>
       {state === 'start' &&
@@ -71,8 +72,7 @@ export default function CustomModal({ show, setShow, state, setState, setPlayerP
       }
       {state === 'won' &&
         <Modal.Body>
-          <h4>Mr. Nikola never lied 💖</h4>
-          <img src={wonImg} className="rounded w-100 mb-3" />
+          <img src={wonImg} className="rounded w-100" />
         </Modal.Body>
       }
       {state === 'lost' &&
@@ -85,7 +85,7 @@ export default function CustomModal({ show, setShow, state, setState, setPlayerP
         <Modal.Footer>
           {state === 'start' && <Button onClick={startGame} className="w-100" variant="success"> Start Game</Button>}
           {state === 'lost' && <Button onClick={resetGame} className="w-100" variant="danger">Play Again?</Button>}
-          {state === 'won' && <Button onClick={resetGame} className="w-100" variant="success"> Play Again</Button>}
+          {state === 'won' && <Button onClick={resetGame} className="w-100" variant="primary"> Play Again</Button>}
         </Modal.Footer>
       }
     </Modal>

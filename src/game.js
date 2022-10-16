@@ -6,9 +6,10 @@ import Voice from './components/Voice'
 import Modal from './components/gameModal'
 import crashAudio from './assets/audio/car-crash.wav'
 import countAudio from './assets/audio/three-second-countdown.wav'
+import successAudio from './assets/audio/applause01.wav'
 import useAudio from './components/AudioPlayer'
 
-function Box({x, y, peds, setState, position, gameState, setShowModal, playCrashAudio, playCountDownAudio}) {
+function Box({x, y, peds, setState, position, gameState, setShowModal, playCrashAudio, playSuccessAudio}) {
   const mesh = useRef()
   const [hovered, setHover] = useState(false)
   const [active, setActive] = useState(false)
@@ -17,7 +18,7 @@ function Box({x, y, peds, setState, position, gameState, setShowModal, playCrash
 
     // check endstate
     if (peds) {
-      goalCheck(peds, mesh.current.position, setState, setShowModal, playCrashAudio, playCountDownAudio)
+      goalCheck(peds, mesh.current.position, setState, setShowModal, playCrashAudio, playSuccessAudio)
     }
 
     // movement
@@ -77,7 +78,7 @@ function Circle({goal, position}) {
   )
 }
 
-function goalCheck(peds, player, setState, setShowModal, playCrashAudio, playCountDownAudio) {
+function goalCheck(peds, player, setState, setShowModal, playCrashAudio, playSuccessAudio) {
   for (const i in peds) {
     const xPos = player.x - peds[i].x 
     const yPos = player.y - peds[i].y 
@@ -85,7 +86,7 @@ function goalCheck(peds, player, setState, setShowModal, playCrashAudio, playCou
       if (peds[i].goal) {
         setState('won')
         setShowModal(true)
-        playCountDownAudio()
+        playSuccessAudio()
         return true
       } else {
         setState('lost')
@@ -107,7 +108,8 @@ export default function Game() {
   const [y, setY] = useState('up')
   const [x, setX] = useState()
   const [playing, playCrashAudio] = useAudio(crashAudio)
-  const [playingCountDown, playCountDownAudio] = useAudio(countAudio)
+  const [playing2, playSuccessAudio] = useAudio(successAudio)
+  const [playing3, playCountdownAudio] = useAudio(countAudio)
 
   function reset() {
     // create peds
@@ -203,7 +205,7 @@ export default function Game() {
           setShowModal={setShowModal}
           gameState={state}
           playCrashAudio={playCrashAudio}
-          playCountDownAudio={playCountDownAudio}
+          playSuccessAudio={playSuccessAudio}
         />
         {peds && peds.map((ped, index) => (
            <Circle 
@@ -213,7 +215,7 @@ export default function Game() {
           />
         ))}
       </Canvas>
-      <Modal state={state} show={showModal} setShow={setShowModal} setState={setState} setPlayerPosition={setPlayerPosition} />
+      <Modal state={state} playCountdownAudio={playCountdownAudio} show={showModal} setShow={setShowModal} setState={setState} setPlayerPosition={setPlayerPosition} />
       {/* {cmd === 'up' && <h1 className="text-center">⬆️</h1>}
       {cmd === 'down' && <h1 className="text-center">⬇️</h1>}
       {cmd === 'left' && <h1 className="text-center">⬅️</h1>}
