@@ -4,7 +4,7 @@ import Voice from "./Voice";
 import { useState } from 'react'
 import lostImg from '../assets/nikola-manager.jpg'
 
-export default function CustomModal({ show, setShow, state, setState, resetState}) {
+export default function CustomModal({ show, setShow, state, setState, setPlayerPosition}) {
   const [counter, setCounter] = useState()
 
   function startGame() {
@@ -27,7 +27,9 @@ export default function CustomModal({ show, setShow, state, setState, resetState
   function resetGame() {
     setState('start')
     setShow(false)
-    resetState()
+    // TODO: find a way to reset without a full page reset
+    window.location.reload(false);
+    // setPlayerPosition([0, -3, 0])
   }
 
   return (
