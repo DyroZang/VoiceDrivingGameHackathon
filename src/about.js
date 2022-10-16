@@ -61,3 +61,32 @@ export default function About() {
     </>
   );
 }
+
+
+// react timer
+
+function TimerComponent() {
+
+currentTime = 60;
+
+function startTimer() {
+  while (currentTime > 0) {
+    currentTime -= currentTime;
+    setTimeout(() => {
+      console.log(`You have ${currentTime} remaining!`)
+    }, 1000);
+  }
+
+  console.log(`Time's up!`);
+}
+
+
+
+  return (
+      <div>
+          Time's out!
+      </div>
+  )
+}
+
+export { TimerComponent }
