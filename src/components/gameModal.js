@@ -1,10 +1,19 @@
+import { Button } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
+import Voice from "./Voice";
+import { useState } from 'react'
 
-export default function CustomModal({ show, setShow, state, setState}) {
-
+export default function CustomModal({ show, setShow, state, setState, resetState}) {
+  const [counter, setCounter] = useState(3)
   function startGame() {
     setShow(false)
     setState('play')
+  }
+
+  function resetGame() {
+    setState('start')
+    setShow(false)
+    resetState()
   }
 
   return (
@@ -28,10 +37,13 @@ export default function CustomModal({ show, setShow, state, setState}) {
           <br></br>
           <br></br>
           <ul>
-            <li>"Straight!"</li>
-            <li>"Right!"</li>
-            <li>"Left!"</li>
+            <li>"Up"</li>
+            <li>"Right"</li>
+            <li>"Down"</li>
+            <li>"Left"</li>
+            <li>"Stop"</li>
           </ul>
+          <Voice testing />
         </Modal.Body>
       }
       {state === 'won' &&
@@ -56,7 +68,10 @@ export default function CustomModal({ show, setShow, state, setState}) {
           </ul>
         </Modal.Body>
       }
-      <Modal.Footer></Modal.Footer>
+      <Modal.Footer>
+        {state === 'lost' && <Button onClick={resetGame} className="w-100" variant="success"> Play Again</Button>}
+        {state === 'won' && <Button onClick={resetGame} className="w-100" variant="success"> Play Again</Button>}
+      </Modal.Footer>
     </Modal>
   );
 }

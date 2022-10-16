@@ -10,13 +10,11 @@ function Box({x, y, peds, setState, gameState, setShowModal}) {
   const [hovered, setHover] = useState(false)
   const [active, setActive] = useState(false)
   useFrame((state, delta) => {
-    if (gameState === 'start') return
+    if (gameState !== 'play') return
 
     // check endstate
     if (peds) {
-      if (gameState === 'play'){
-        goalCheck(peds, mesh.current.position, setState, setShowModal)
-      }
+      goalCheck(peds, mesh.current.position, setState, setShowModal)
     }
 
     // movement
@@ -102,8 +100,7 @@ export default function Game() {
   const [y, setY] = useState('up')
   const [x, setX] = useState()
 
-  useEffect(() => {
-
+  function reset() {
     // create peds
     const arr = Array.from(Array(20).keys())
     for (let i = 0; i < 20; i++) {
@@ -123,43 +120,64 @@ export default function Game() {
       setPeds(arr)
     }
 
+    // set player
+  }
+
+  useEffect(() => {
+    reset()
     // capture input
-    if (typeof window !== 'undefined') {
-      const handleKeyDown = (e) => {
-        // console.log('key', e.key)
-        if (e.key === 'ArrowUp') {
-          setY('up')
-          setX()
-        } else if (e.key === 'ArrowDown') {
-          setY('down')
-          setX()
-        } else if (e.key === 'ArrowLeft') {
-          setY()
-          setX('left')
-        } else if (e.key === 'ArrowRight') {
-          setY()
-          setX('right')
-        } else if (e.key === ' ') {
-          setY()
-          setX()
-        }
-      }
-      document.addEventListener('keydown', handleKeyDown)
-      return () => {
-        document.removeEventListener('keydown', handleKeyDown)
-      }
-    }
+    // if (typeof window !== 'undefined') {
+    //   const handleKeyDown = (e) => {
+    //     // console.log('key', e.key)
+    //     if (e.key === 'ArrowUp') {
+    //       setY('up')
+    //       setX()
+    //     } else if (e.key === 'ArrowDown') {
+    //       setY('down')
+    //       setX()
+    //     } else if (e.key === 'ArrowLeft') {
+    //       setY()
+    //       setX('left')
+    //     } else if (e.key === 'ArrowRight') {
+    //       setY()
+    //       setX('right')
+    //     } else if (e.key === ' ') {
+    //       setY()
+    //       setX()
+    //     }
+    //   }
+    //   document.addEventListener('keydown', handleKeyDown)
+    //   return () => {
+    //     document.removeEventListener('keydown', handleKeyDown)
+    //   }
+    // }
   }, [])
-  // useEffect(() => {
-  //   console.log(peds)
-  // }, [peds])
+
+  useEffect(() => {
+    if (cmd === 'up') {
+      setY('up')
+      setX()
+    } else if (cmd === 'down') {
+      setY('down')
+      setX()
+    } else if (cmd === 'left') {
+      setY()
+      setX('left')
+    } else if (cmd === 'right') {
+      setY()
+      setX('right')
+    } else if (cmd === 'stop') {
+      setY()
+      setX()
+    }
+  }, [cmd])
 
   return (
     <div
       className="menuPage"
       style={{
         backgroundImage: `url(${backgroundImg})`,
-        height: "80vh",
+        height: "90vh",
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -169,7 +187,7 @@ export default function Game() {
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-        <Box 
+        <Box
           position={[0, 0, 0]} x={x} y={y} 
           peds={peds} 
           setState={setState} 
@@ -185,8 +203,13 @@ export default function Game() {
         ))}
       </Canvas>
       <Modal state={state} show={showModal} setShow={setShowModal} setState={setState} />
-      {state && <h1 className="text-center">{state}</h1>}
-      <Voice state={state} />
+      {cmd === 'up' && <h1 className="text-center">⬆️</h1>}
+      {cmd === 'down' && <h1 className="text-center">⬇️</h1>}
+      {cmd === 'left' && <h1 className="text-center">⬅️</h1>}
+      {cmd === 'right' && <h1 className="text-center">➡️</h1>}
+      {cmd === 'stop' && <h1 className="text-center">🛑</h1>}
+      {/* {cmd && <h1 className="text-center">{cmd}</h1>} */}
+      {state === 'play' && <Voice state={state} setCmd={setCmd} />}
     </div>
   )
 }
