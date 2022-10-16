@@ -27,10 +27,10 @@ export default function CustomModal({ show, setShow, state, setState, setPlayerP
   }
 
   function resetGame() {
-    setState('start')
-    setShow(false)
-    // TODO: find a way to reset without a full page reset
     window.location.reload(false);
+    setState('start')
+    // setShow(false)
+    // TODO: find a way to reset without a full page reset
     // setPlayerPosition([0, -3, 0])
   }
 
