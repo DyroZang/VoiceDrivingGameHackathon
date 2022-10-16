@@ -4,8 +4,10 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import backgroundImg from './assets/maps.png'
 import Voice from './components/Voice'
 import Modal from './components/gameModal'
+import crashAudio from './assets/audio/car-crash.wav'
+import useAudio from './components/AudioPlayer'
 
-function Box({x, y, peds, setState, position, gameState, setShowModal}) {
+function Box({x, y, peds, setState, position, gameState, setShowModal, playCrashAudio}) {
   const mesh = useRef()
   const [hovered, setHover] = useState(false)
   const [active, setActive] = useState(false)
@@ -14,7 +16,7 @@ function Box({x, y, peds, setState, position, gameState, setShowModal}) {
 
     // check endstate
     if (peds) {
-      goalCheck(peds, mesh.current.position, setState, setShowModal)
+      goalCheck(peds, mesh.current.position, setState, setShowModal, playCrashAudio)
     }
 
     // movement
@@ -74,7 +76,7 @@ function Circle({goal, position}) {
   )
 }
 
-function goalCheck(peds, player, setState, setShowModal) {
+function goalCheck(peds, player, setState, setShowModal, playCrashAudio) {
   for (const i in peds) {
     const xPos = player.x - peds[i].x 
     const yPos = player.y - peds[i].y 
@@ -86,6 +88,7 @@ function goalCheck(peds, player, setState, setShowModal) {
       } else {
         setState('lost')
         setShowModal(true)
+        playCrashAudio()
         return true
       }
 
@@ -101,6 +104,7 @@ export default function Game() {
   const [peds, setPeds] = useState([])
   const [y, setY] = useState('up')
   const [x, setX] = useState()
+  const [playing, playCrashAudio] = useAudio(crashAudio)
 
   function reset() {
     // create peds
@@ -195,6 +199,7 @@ export default function Game() {
           setState={setState} 
           setShowModal={setShowModal}
           gameState={state}
+          playCrashAudio={playCrashAudio}
         />
         {peds && peds.map((ped, index) => (
            <Circle 

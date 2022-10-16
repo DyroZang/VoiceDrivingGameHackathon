@@ -3,15 +3,12 @@ import Modal from "react-bootstrap/Modal";
 import Voice from "./Voice";
 import { useState } from 'react'
 import lostImg from '../assets/nikola-manager.jpg'
-import mySound from '../assets/audio/car-crash.wav'
-import useAudio from './AudioPlayer'
+import wonImg from '../assets/nikola-won.jpg'
 
 export default function CustomModal({ show, setShow, state, setState, setPlayerPosition}) {
   const [counter, setCounter] = useState()
-  const [playing, toggle] = useAudio(mySound)
 
   function startGame() {
-    toggle()
     setCounter(3)
     setTimeout(() => {
       setCounter(2)
@@ -54,7 +51,7 @@ export default function CustomModal({ show, setShow, state, setState, setPlayerP
                 <br></br>
                 <ul>
                   <li>You have 1 minute to finish the game</li>
-                  <li>You have 2 commands</li>
+                  <li>You have 5 commands</li>
                 </ul>
 
                 <b>Commands:</b>
@@ -74,13 +71,8 @@ export default function CustomModal({ show, setShow, state, setState, setPlayerP
       }
       {state === 'won' &&
         <Modal.Body>
-          <b>PLACEHOLDER</b>
-          <br></br>
-          <br></br>
-          <ul>
-            <li></li>
-            <li></li>
-          </ul>
+          <h4>Mr. Nikola never lied 💖</h4>
+          <img src={wonImg} className="rounded w-100 mb-3" />
         </Modal.Body>
       }
       {state === 'lost' &&
