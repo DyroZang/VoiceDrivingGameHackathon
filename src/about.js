@@ -80,6 +80,7 @@ function startTimer() {
   console.log(`Time's up!`);
 }
 
+startTimer();
 
 
   return (
